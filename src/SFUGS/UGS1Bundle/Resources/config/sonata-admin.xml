@@ -1,0 +1,26 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service id="sonata.admin.sfugs1.event" class="SFUGS\UGS1Bundle\Admin\EventAdmin">
+            <tag name="sonata.admin" manager_type="orm" group="Demo" label="Events"/>
+            <argument />
+            <argument>SFUGS\UGS1Bundle\Entity\Event</argument>
+            <argument>SonataAdminBundle:CRUD</argument>
+        </service>
+        <service id="sonata.admin.sfugs1.genre" class="SFUGS\UGS1Bundle\Admin\GenreAdmin">
+            <tag name="sonata.admin" manager_type="orm" group="Demo" label="Genres"/>
+            <argument />
+            <argument>SFUGS\UGS1Bundle\Entity\Genre</argument>
+            <argument>SonataAdminBundle:CRUD</argument>
+        </service>
+        <service id="sonata.admin.sfugs1.location" class="SFUGS\UGS1Bundle\Admin\LocationAdmin">
+            <tag name="sonata.admin" manager_type="orm" group="Demo" label="Locations"/>
+            <argument />
+            <argument>SFUGS\UGS1Bundle\Entity\Location</argument>
+            <argument>SonataAdminBundle:CRUD</argument>
+        </service>
+    </services>
+</container>

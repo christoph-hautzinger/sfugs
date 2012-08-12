@@ -1,0 +1,16 @@
+SFUGS\UGS1Bundle\Entity\Genre:
+  type: entity
+  fields:
+    id:
+      id: true
+      type: integer
+      generator:
+        strategy: AUTO
+    name:
+      type: string
+      length: 255
+      nullable: true
+  manyToMany:
+    events:
+      targetEntity: SFUGS\UGS1Bundle\Entity\Event
+      mappedBy: genres

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<orm-designer version="1.4.7.499">
+
+  <project code-name="Sfugs1" framework="Without Framework" name="sfugs1" orm="Doctrine2" visSizeX="0" visSizeX2="959" visSizeY="0" visSizeY2="598">
+    <module-position name="sfugs1" visPositionX="50" visPositionY="50"/>
+  </project>
+
+  <module import-format="Doctrine2Yml" import-path="config\doctrine\" name="sfugs1" visBkColor="16380923" visSizeX="0" visSizeX2="664" visSizeY="0" visSizeY2="471">
+    <table name="Event" visPositionX="313" visPositionY="124" visSizeX="0" visSizeX2="104" visSizeY="0" visSizeY2="87">
+      <column auto-increment="true" name="id" primary="true" required="true" type="integer"/>
+      <column name="name" required="true" size="255" type="string"/>
+      <column name="description" type="text"/>
+      <column name="date" required="true" type="date"/>
+      <column name="enabled" type="boolean"/>
+      <column name="location_id" type="integer"/>
+    </table>
+    <table name="Location" visPositionX="511" visPositionY="152" visSizeX="0" visSizeX2="83" visSizeY="0" visSizeY2="45">
+      <column auto-increment="true" name="id" primary="true" required="true" type="integer"/>
+      <column name="name" required="true" type="string"/>
+    </table>
+    <table name="Genre" visPositionX="50" visPositionY="140" visSizeX="0" visSizeX2="20" visSizeY="0" visSizeY2="20">
+      <column auto-increment="true" name="id" primary="true" required="true" type="integer"/>
+      <column name="name" size="255" type="string"/>
+    </table>
+    <table name="EventToGenre" visPositionX="163" visPositionY="291" visSizeX="0" visSizeX2="101" visSizeY="0" visSizeY2="60">
+      <column name="event_id" required="true" type="integer"/>
+      <column name="genre_id" required="true" type="integer"/>
+    </table>
+    <orm-properties>
+      <attribute name="namespace">SFUGS\UGS1Bundle\Entity</attribute>
+      <attribute name="file-suffix">.orm</attribute>
+    </orm-properties>
+    <foreign-key caption="Location Event" from="Event" name="FK_Event_Location_id" to="Location" visShowCaption="0">
+      <foreign-key-column from="location_id" to="id"/>
+    </foreign-key>
+    <foreign-key caption="Event EventToGenre" from="EventToGenre" name="FK_EventToGenre_Event_id" to="Event" visShowCaption="0">
+      <foreign-key-column from="event_id" to="id"/>
+    </foreign-key>
+    <foreign-key caption="Genre EventToGenre" from="EventToGenre" name="FK_EventToGenre_Genre_id" to="Genre" visShowCaption="0">
+      <foreign-key-column from="genre_id" to="id"/>
+    </foreign-key>
+    <many-to-many-relation mn-table="EventToGenre">
+      <many-to-many-foreign-key foreign-key="FK_EventToGenre_Event_id" relation-alias="events"/>
+      <many-to-many-foreign-key foreign-key="FK_EventToGenre_Genre_id" relation-alias="genres"/>
+    </many-to-many-relation>
+  </module>
+
+</orm-designer>

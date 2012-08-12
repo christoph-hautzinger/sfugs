@@ -1,0 +1,42 @@
+SFUGS\UGS1Bundle\Entity\Event:
+  type: entity
+  fields:
+    id:
+      id: true
+      type: integer
+      generator:
+        strategy: AUTO
+    name:
+      type: string
+      length: 255
+      nullable: false
+    description:
+      type: text
+      nullable: true
+    date:
+      type: date
+      nullable: false
+    enabled:
+      type: boolean
+      nullable: true
+  manyToOne:
+    location:
+      targetEntity: SFUGS\UGS1Bundle\Entity\Location
+      inversedBy: events
+      joinColumns:
+        location_id:
+          referencedColumnName: id
+  manyToMany:
+    genres:
+      targetEntity: SFUGS\UGS1Bundle\Entity\Genre
+      inversedBy: events
+      joinTable:
+        name: EventToGenre
+        joinColumns:
+          event_id:
+            referencedColumnName: id
+            nullable: false
+        inverseJoinColumns:
+          genre_id:
+            referencedColumnName: id
+            nullable: false
